@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background-primary: #F9F9F9;
+  --color-background-secondary: #FFFFFF;
+  --color-background-dark: #0E1116;
+
+  --color-text-primary: #111111;
+  --color-text-secondary: #666666;
+  --color-text-inverted: #FFFFFF;
+
+  --color-accent-blue: #0A192F;
+  /* Deep Blue */
+  --color-accent-blue-light: #1E293B;
+  --color-accent-blue-brand-light: #4A729D;
+  /* Lighter blue from logo symbol */
+  --color-accent-gold: #C5A065;
+  /* Subtle Gold */
+
+  --font-inter: var(--font-inter);
+  --font-playfair: var(--font-playfair);
+
+  --text-display: 3rem;
+  /* 48px */
+  --text-h1: 2.5rem;
+  /* 40px */
+  --text-h2: 2rem;
+  /* 32px */
+  --text-h3: 1.5rem;
+  /* 24px */
+  --text-body: 1rem;
+  /* 16px */
+  --text-small: 0.875rem;
+  /* 14px */
+
+  --spacing-container: 1200px;
+
+  --radius-card: 8px;
+  --radius-button: 4px;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-playfair), serif;
+  color: var(--color-accent-blue-brand-light);
+}
+
+h1 strong,
+h2 strong {
+  color: var(--color-accent-gold);
+}
+
+.font-playfair {
+  font-family: var(--font-playfair), serif;
+}
+
+.text-justify-custom {
+  text-align: justify;
+  text-justify: inter-word;
+}
