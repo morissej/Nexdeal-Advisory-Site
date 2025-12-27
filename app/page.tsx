@@ -17,14 +17,14 @@ export default function Home() {
 
         <div className="max-w-[var(--spacing-container)] mx-auto px-6 lg:px-8 relative z-10 w-full">
           <div className="max-w-3xl">
-            <div className="text-display md:text-8xl font-playfair font-bold mb-36 animate-fade-in-up text-accent-blue">
-              Nexdeal Advisory
-            </div>
             <h1 className="text-display font-playfair mb-6 leading-tight animate-fade-in-up">
               Be M&A ready.
             </h1>
-            <p className="text-h3 text-text-secondary mb-10 font-light leading-relaxed max-w-2xl animate-fade-in-up delay-100">
+            <p className="text-h3 text-text-secondary mb-6 font-light leading-relaxed max-w-2xl animate-fade-in-up delay-100">
               Conseil stratégique indépendant pour dirigeants et professionnels du M&A confrontés à des choix cruciaux : croissance, capital, transmission, M&A.
+            </p>
+            <p className="text-lg text-text-secondary mb-10 leading-relaxed max-w-2xl animate-fade-in-up delay-200">
+              En tant que partenaire neutre, détaché de la pression transactionnelle, nous vous offrons le recul critique nécessaire pour dérisquer vos décisions et sécuriser la valeur à long terme. Mieux qu'un simple conseil, nous vous accompagnons en amont pour préparer, et en aval pour concrétiser, garantissant que chaque mouvement stratégique serve durablement votre vision.
             </p>
             {/* CTAs removed as requested */}
           </div>

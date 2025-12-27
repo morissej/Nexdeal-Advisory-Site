@@ -9,11 +9,11 @@ import { Button } from '@/components/ui/Button';
 
 const NAV_ITEMS = [
     { label: 'Accueil', href: '/' },
-    { label: 'Services', href: '/services' },
-    { label: 'Cible', href: '/target' },
-    { label: 'Insights', href: '/insights' },
+    { label: 'Notre approche', href: '/services' },
+    { label: 'Sparring Partner', href: '/sparring-partner' },
+    { label: 'Bodyguard', href: '/bodyguard' },
+    { label: 'CEOs Painpoints', href: '/pain-points' },
     { label: 'Équipe', href: '/team' },
-    { label: 'Diagnostic IA', href: '/diagnostic' },
 ];
 
 export const Header: React.FC = () => {
@@ -63,7 +63,7 @@ export const Header: React.FC = () => {
                         alt="NexDeal Advisory"
                         width={750}
                         height={180}
-                        className={`w-auto object-contain transition-all duration-300 ${isScrolled ? 'h-20' : 'h-60'}`}
+                        className={`w-auto object-contain transition-all duration-300 ${isScrolled ? 'h-40' : 'h-60'}`}
                         priority
                     />
                 </Link>

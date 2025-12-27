@@ -3,14 +3,54 @@
 import { useState } from 'react';
 import { Section } from '@/components/ui/Section';
 import { Button } from '@/components/ui/Button';
+import { db } from '@/lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import emailjs from '@emailjs/browser';
+
+// Firebase initialized in @/lib/firebase
 
 export default function ContactPage() {
     const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Here we would handle the submission
-        setSubmitted(true);
+        setLoading(true);
+        setError('');
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        const data = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            company: formData.get('company'),
+            role: formData.get('role'),
+            turnover: formData.get('turnover'),
+            website: formData.get('website'),
+            message: formData.get('message'),
+            submittedAt: serverTimestamp(),
+            status: 'new'
+        };
+
+        try {
+            // 1. Save to Firebase
+            await addDoc(collection(db, "contacts"), data);
+
+            // 2. Send Email via EmailJS
+            const SERVICE_ID = 'service_v8a9rdk';
+            const TEMPLATE_ID = 'template_tq6r3op';
+            const PUBLIC_KEY = '6uz38p0daq7Nnc0Bp';
+
+            await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, PUBLIC_KEY);
+
+            setSubmitted(true);
+        } catch (err) {
+            console.error("Error submitting form: ", err);
+            setError("Une erreur est survenue. Veuillez réessayer.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     if (submitted) {
@@ -34,9 +74,7 @@ export default function ContactPage() {
             <section className="py-24 border-b border-gray-100">
                 <div className="max-w-[var(--spacing-container)] mx-auto px-6 lg:px-8">
                     <h1 className="text-display font-playfair mb-6 animate-fade-in-up">Entrons en contact.</h1>
-                    <p className="text-h3 text-text-secondary font-light max-w-2xl animate-fade-in-up delay-100">
-                        Nous ne répondons pas à toutes les sollicitations. Ce formulaire vise à comprendre votre situation, pas à initier une démarche commerciale.
-                    </p>
+
                 </div>
             </section>
 
@@ -64,27 +102,27 @@ export default function ContactPage() {
                         <div className="grid grid-cols-2 gap-6">
                             <div className="space-y-2">
                                 <label htmlFor="firstName" className="text-sm font-medium text-text-secondary">Prénom</label>
-                                <input type="text" id="firstName" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" />
+                                <input type="text" id="firstName" name="firstName" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" />
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="lastName" className="text-sm font-medium text-text-secondary">Nom</label>
-                                <input type="text" id="lastName" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" />
+                                <input type="text" id="lastName" name="lastName" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" />
                             </div>
                         </div>
 
                         <div className="space-y-2">
                             <label htmlFor="company" className="text-sm font-medium text-text-secondary">Entreprise</label>
-                            <input type="text" id="company" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" />
+                            <input type="text" id="company" name="company" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" />
                         </div>
 
                         <div className="grid grid-cols-2 gap-6">
                             <div className="space-y-2">
                                 <label htmlFor="role" className="text-sm font-medium text-text-secondary">Fonction</label>
-                                <input type="text" id="role" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" />
+                                <input type="text" id="role" name="role" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" />
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="turnover" className="text-sm font-medium text-text-secondary">Chiffre d'Affaires</label>
-                                <select id="turnover" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all">
+                                <select id="turnover" name="turnover" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all">
                                     <option value="">Sélectionner...</option>
                                     <option value="0-50">0 - 50 M€</option>
                                     <option value="50-100">50 - 100 M€</option>
@@ -96,17 +134,20 @@ export default function ContactPage() {
 
                         <div className="space-y-2">
                             <label htmlFor="website" className="text-sm font-medium text-text-secondary">Site Internet</label>
-                            <input type="url" id="website" className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" placeholder="https://" />
+                            <input type="url" id="website" name="website" className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" placeholder="https://" />
                         </div>
 
                         <div className="space-y-2">
                             <label htmlFor="message" className="text-sm font-medium text-text-secondary">Message (Facultatif)</label>
-                            <textarea id="message" rows={4} className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" placeholder="Contexte rapide..."></textarea>
+                            <textarea id="message" name="message" rows={4} className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" placeholder="Contexte rapide..."></textarea>
                         </div>
 
-                        <Button type="submit" variant="primary" className="w-full justify-center py-4">
-                            Envoyer la demande
+                        {error && <p className="text-red-500 text-sm">{error}</p>}
+
+                        <Button type="submit" variant="primary" className="w-full justify-center py-4" disabled={loading}>
+                            {loading ? 'Envoi en cours...' : 'Envoyer la demande'}
                         </Button>
+
 
                         <p className="text-xs text-center text-text-secondary mt-4">
                             Vos données sont protégées et ne seront jamais commercialisées.
