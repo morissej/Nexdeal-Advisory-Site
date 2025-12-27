@@ -1,0 +1,12 @@
+{
+    "hosting": {
+        "target": "nexdeal-site",
+        "public": "out",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ],
+        "cleanUrls": true
+    }
+}
