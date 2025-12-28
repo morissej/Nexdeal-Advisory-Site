@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
                     <div>
                         <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Contact</h4>
                         <p className="text-gray-300 mb-2">Paris, France</p>
-                        <a href="mailto:contact@nexdeal.advisory" className="text-gray-300 hover:text-white transition-colors">contact@nexdeal.advisory</a>
+                        <a href="mailto:nexdealadvisory@gmail.com" className="text-gray-300 hover:text-white transition-colors">nexdealadvisory@gmail.com</a>
                     </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
