@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
                     </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-                    <p>&copy; 2026 NexDeal Advisory. All rights reserved. v1.1</p>
+                    <p>&copy; 2026 NexDeal Advisory. All rights reserved.</p>
                     <div className="flex gap-6 mt-4 md:mt-0">
                         <Link href="/legal" className="hover:text-gray-400">Mentions Légales</Link>
                         <Link href="/admin" className="hover:text-gray-400 text-gray-700">Admin</Link>
