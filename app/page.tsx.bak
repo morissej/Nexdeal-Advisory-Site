@@ -1,9 +1,8 @@
-
+'use client';
 
 import Link from 'next/link';
 import { ArrowRight, Shield, Swords, TrendingUp, Users, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
-import { ScrollDownButton } from '@/components/ui/ScrollDownButton';
 import { Section } from '@/components/ui/Section';
 import { Card } from '@/components/ui/Card';
 import { Icon } from '@/components/ui/Icon';
@@ -32,7 +31,14 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <ScrollDownButton />
+        <div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-accent-blue/50 cursor-pointer hover:text-accent-blue transition-colors"
+          onClick={() => {
+            document.getElementById('philosophy-section')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          <Icon icon={ChevronDown} size={32} />
+        </div>
       </section>
 
       {/* Philosophy Section */}
