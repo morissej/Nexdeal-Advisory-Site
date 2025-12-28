@@ -88,13 +88,9 @@ export default function ContactPage() {
                         </div>
                         <div className="mb-12">
                             <h3 className="text-xl font-playfair mb-4">Email</h3>
-                            <p className="text-text-secondary">contact@nexdeal.advisory</p>
+                            <p className="text-text-secondary">nexdealadvisory@gmail.com</p>
                         </div>
-                        <div className="p-6 bg-gray-50 border border-gray-100 rounded-[var(--radius-card)]">
-                            <p className="text-sm text-text-secondary italic">
-                                "La confidentialité est notre première valeur. Aucun échange n'est partagé avec des tiers sans accord explicite."
-                            </p>
-                        </div>
+
                     </div>
 
                     {/* Form */}

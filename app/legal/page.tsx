@@ -21,7 +21,7 @@ export default function LegalPage() {
                             Le site NexDeal Advisory est édité par la société NexDeal Advisory.<br />
                             <strong>Forme juridique :</strong> Société par Actions Simplifiée (SAS)<br />
                             <strong>Siège social :</strong> Paris, France<br />
-                            <strong>Email :</strong> contact@nexdeal.advisory<br />
+                            <strong>Email :</strong> nexdealadvisory@gmail.com<br />
                         </p>
                     </div>
 
@@ -60,7 +60,7 @@ export default function LegalPage() {
                         <p className="text-text-secondary leading-relaxed">
                             Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d’un droit d’accès, de rectification, de portabilité et d’effacement de vos données personnelles.
                             Les informations recueillies via le formulaire de contact sont destinées exclusivement à NexDeal Advisory pour le traitement de votre demande et ne sont jamais transmises à des tiers à des fins commerciales.
-                            Pour exercer vos droits, vous pouvez nous contacter à l'adresse : contact@nexdeal.advisory.
+                            Pour exercer vos droits, vous pouvez nous contacter à l'adresse : nexdealadvisory@gmail.com.
                         </p>
                     </div>
 
