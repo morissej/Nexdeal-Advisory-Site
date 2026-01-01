@@ -23,15 +23,20 @@ export const Footer: React.FC = () => {
                     <div className="flex flex-col gap-4">
                         <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Liens</h4>
                         <a href="https://nexdeal-sparring.firebaseapp.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Mini site Sparring Partner</a>
+                        <a href="https://landing-page-body-guard.firebaseapp.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Mini site Body Guard</a>
                         <a href="https://vague-transmission.web.app/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Mini site La grande transmission</a>
                         <a href="https://competitivite-explorer-fr.firebaseapp.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Mini site Le casse tête de compétitivité</a>
-                        <a href="https://www.linkedin.com/company/110420139/admin/dashboard/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Linkedin Nexdeal Advisory</a>
-                        <a href="https://www.linkedin.com/showcase/ceos-pain-points/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Linkedin CEO Pain Points</a>
                     </div>
                     <div>
                         <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Contact</h4>
                         <p className="text-gray-300 mb-2">Paris, France</p>
-                        <a href="mailto:nexdealadvisory@gmail.com" className="text-gray-300 hover:text-white transition-colors">nexdealadvisory@gmail.com</a>
+                        <a href="mailto:nexdealadvisory@gmail.com" className="text-gray-300 hover:text-white transition-colors mb-6 block">nexdealadvisory@gmail.com</a>
+
+                        <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Liens Linkedin</h4>
+                        <div className="flex flex-col gap-2">
+                            <a href="https://www.linkedin.com/company/110420139/admin/dashboard/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Linkedin Nexdeal Advisory</a>
+                            <a href="https://www.linkedin.com/showcase/ceos-pain-points/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Linkedin CEO Pain Points</a>
+                        </div>
                     </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
