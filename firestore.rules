@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Rules for the 'contacts' collection
+    match /contacts/{contact} {
+      // Allow anyone to submit a contact form
+      allow create: if true;
+      
+      // Currently allowing public read access so the internal Admin page works.
+      // TODO: Implementation of Firebase Auth is recommended to restrict this to 'if request.auth != null'.
+      allow read: if true;
+      
+      // Disallow updates or deletes from the client side for safety
+      allow update, delete: if false;
+    }
+    
+    // Default rule: Deny everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
