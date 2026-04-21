@@ -17,6 +17,14 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: 'NexDeal Advisory | Sparring Partner & Strategic Bodyguard',
   description: 'Conseil stratégique indépendant pour dirigeants et professionnels du M&A confrontés à des choix cruciaux.',
+  openGraph: {
+    title: 'NexDeal Advisory',
+    description: 'Conseil stratégique indépendant pour dirigeants et professionnels du M&A.',
+    url: 'https://nexdealadvisory.com',
+    siteName: 'NexDeal Advisory',
+    locale: 'fr_FR',
+    type: 'website',
+  },
 };
 
 import { Header } from '@/components/layout/Header';
@@ -29,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body className={`${inter.variable} ${playfair.variable} antialiased bg-background-primary text-text-primary flex flex-col min-h-screen`}>
         <Header />
         <main className="flex-grow pt-20">
