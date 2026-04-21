@@ -3,51 +3,50 @@
 import { useState } from 'react';
 import { Section } from '@/components/ui/Section';
 import { Button } from '@/components/ui/Button';
-import { db } from '@/lib/firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import emailjs from '@emailjs/browser';
-
-// Firebase initialized in @/lib/firebase
 
 export default function ContactPage() {
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({});
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
         setError('');
+        setFieldErrors({});
 
         const form = e.currentTarget;
         const formData = new FormData(form);
         const data = {
-            firstName: formData.get('firstName'),
-            lastName: formData.get('lastName'),
-            company: formData.get('company'),
-            role: formData.get('role'),
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone') || undefined,
             turnover: formData.get('turnover'),
-            website: formData.get('website'),
             message: formData.get('message'),
-            submittedAt: serverTimestamp(),
-            status: 'new'
         };
 
         try {
-            // 1. Save to Firebase
-            await addDoc(collection(db, "contacts"), data);
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await res.json();
 
-            // 2. Send Email via EmailJS
-            const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
-            const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
-            const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
-
-            await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, PUBLIC_KEY);
-
-            setSubmitted(true);
+            if (!res.ok) {
+                if (result.errors) {
+                    setFieldErrors(result.errors);
+                    setError("Veuillez corriger les erreurs dans le formulaire.");
+                } else {
+                    setError(result.error || "Une erreur est survenue.");
+                }
+            } else {
+                setSubmitted(true);
+            }
         } catch (err) {
             console.error("Error submitting form: ", err);
-            setError("Une erreur est survenue. Veuillez réessayer.");
+            setError("Une erreur inattendue est survenue. Veuillez réessayer.");
         } finally {
             setLoading(false);
         }
@@ -74,13 +73,11 @@ export default function ContactPage() {
             <section className="py-24 border-b border-gray-100">
                 <div className="max-w-[var(--spacing-container)] mx-auto px-6 lg:px-8">
                     <h1 className="text-display font-playfair mb-6 animate-fade-in-up">Entrons en contact.</h1>
-
                 </div>
             </section>
 
             <Section>
                 <div className="grid lg:grid-cols-2 gap-16">
-                    {/* Info */}
                     <div>
                         <div className="mb-12">
                             <h3 className="text-xl font-playfair mb-4">Bureau</h3>
@@ -90,52 +87,68 @@ export default function ContactPage() {
                             <h3 className="text-xl font-playfair mb-4">Email</h3>
                             <p className="text-text-secondary">nexdealadvisory@gmail.com</p>
                         </div>
-
                     </div>
 
-                    {/* Form */}
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label htmlFor="firstName" className="text-sm font-medium text-text-secondary">Prénom</label>
-                                <input type="text" id="firstName" name="firstName" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" />
+                                <label htmlFor="name" className="text-sm font-medium text-text-secondary">Nom complet *</label>
+                                <input 
+                                    type="text" id="name" name="name" 
+                                    required aria-required="true" 
+                                    aria-invalid={!!fieldErrors.name}
+                                    className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" 
+                                />
+                                {fieldErrors.name && <p className="text-red-500 text-xs mt-1">{fieldErrors.name[0]}</p>}
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="lastName" className="text-sm font-medium text-text-secondary">Nom</label>
-                                <input type="text" id="lastName" name="lastName" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" />
+                                <label htmlFor="email" className="text-sm font-medium text-text-secondary">Email *</label>
+                                <input 
+                                    type="email" id="email" name="email" 
+                                    required aria-required="true"
+                                    aria-invalid={!!fieldErrors.email}
+                                    className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" 
+                                />
+                                {fieldErrors.email && <p className="text-red-500 text-xs mt-1">{fieldErrors.email[0]}</p>}
                             </div>
-                        </div>
-
-                        <div className="space-y-2">
-                            <label htmlFor="company" className="text-sm font-medium text-text-secondary">Entreprise</label>
-                            <input type="text" id="company" name="company" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" />
                         </div>
 
                         <div className="grid grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label htmlFor="role" className="text-sm font-medium text-text-secondary">Fonction</label>
-                                <input type="text" id="role" name="role" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" />
+                                <label htmlFor="phone" className="text-sm font-medium text-text-secondary">Téléphone</label>
+                                <input 
+                                    type="tel" id="phone" name="phone" 
+                                    className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" 
+                                />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="turnover" className="text-sm font-medium text-text-secondary">Chiffre d'Affaires</label>
-                                <select id="turnover" name="turnover" required className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all">
+                                <label htmlFor="turnover" className="text-sm font-medium text-text-secondary">Chiffre d'Affaires *</label>
+                                <select 
+                                    id="turnover" name="turnover" 
+                                    required aria-required="true"
+                                    aria-invalid={!!fieldErrors.turnover}
+                                    className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all"
+                                >
                                     <option value="">Sélectionner...</option>
                                     <option value="0-50">0 - 50 M€</option>
                                     <option value="50-100">50 - 100 M€</option>
                                     <option value="100-500">100 - 500 M€</option>
                                     <option value="500+">500 M€ +</option>
                                 </select>
+                                {fieldErrors.turnover && <p className="text-red-500 text-xs mt-1">{fieldErrors.turnover[0]}</p>}
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <label htmlFor="website" className="text-sm font-medium text-text-secondary">Site Internet</label>
-                            <input type="url" id="website" name="website" className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" placeholder="https://" />
-                        </div>
-
-                        <div className="space-y-2">
-                            <label htmlFor="message" className="text-sm font-medium text-text-secondary">Message (Facultatif)</label>
-                            <textarea id="message" name="message" rows={4} className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" placeholder="Contexte rapide..."></textarea>
+                            <label htmlFor="message" className="text-sm font-medium text-text-secondary">Message *</label>
+                            <textarea 
+                                id="message" name="message" rows={4} 
+                                required aria-required="true"
+                                aria-invalid={!!fieldErrors.message}
+                                className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all" 
+                                placeholder="Contexte rapide..."
+                            ></textarea>
+                            {fieldErrors.message && <p className="text-red-500 text-xs mt-1">{fieldErrors.message[0]}</p>}
                         </div>
 
                         {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -143,7 +156,6 @@ export default function ContactPage() {
                         <Button type="submit" variant="primary" className="w-full justify-center py-4" disabled={loading}>
                             {loading ? 'Envoi en cours...' : 'Envoyer la demande'}
                         </Button>
-
 
                         <p className="text-xs text-center text-text-secondary mt-4">
                             Vos données sont protégées et ne seront jamais commercialisées.
