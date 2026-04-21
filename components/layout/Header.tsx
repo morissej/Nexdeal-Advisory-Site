@@ -71,12 +71,15 @@ export const Header: React.FC = () => {
                 <button
                     className="md:hidden relative z-50 text-text-primary"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    aria-label="Menu"
+                    aria-expanded={mobileMenuOpen}
+                    aria-controls="mobile-menu"
                 >
                     {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
 
                 {/* Mobile Menu Overlay */}
-                <div className={`fixed inset-0 bg-background-primary z-40 flex flex-col items-center justify-center transition-opacity duration-300 md:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                <div id="mobile-menu" className={`fixed inset-0 bg-background-primary z-40 flex flex-col items-center justify-center transition-opacity duration-300 md:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                     }`}>
                     <nav className="flex flex-col items-center gap-8 text-center">
                         {NAV_ITEMS.map((item) => (

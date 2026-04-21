@@ -1,8 +1,15 @@
 'use client';
 
+import { useState } from 'react';
 import { Section } from '@/components/ui/Section';
 
 export default function SparringPartnerPage() {
+    const [openSection, setOpenSection] = useState<number | null>(null);
+
+    const toggleSection = (idx: number) => {
+        setOpenSection(openSection === idx ? null : idx);
+    };
+
     return (
         <>
             <section className="bg-background-secondary py-32 border-b border-gray-100">
@@ -19,15 +26,20 @@ export default function SparringPartnerPage() {
 
                     <div className="space-y-6">
                         {/* Block 1 */}
-                        <div className="group relative p-8 rounded-2xl bg-white border border-gray-100 hover:border-accent-blue/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 animate-fade-in-up delay-200 overflow-hidden">
-                            <div className="flex justify-between items-center cursor-pointer">
-                                <h3 className="text-3xl font-playfair text-accent-blue group-hover:text-accent-gold transition-colors duration-300">Préparation à la Transaction (Vente ou IPO)</h3>
-                                <span className="text-accent-blue group-hover:text-accent-gold transform group-hover:rotate-180 transition-all duration-500">
+                        <div className={`group relative p-8 rounded-2xl bg-white border transition-all duration-500 animate-fade-in-up delay-200 overflow-hidden ${openSection === 0 ? 'border-accent-blue/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)]' : 'border-gray-100 hover:border-accent-blue/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]'}`}>
+                            <button 
+                                className="w-full flex justify-between items-center cursor-pointer text-left"
+                                onClick={() => toggleSection(0)}
+                                aria-expanded={openSection === 0}
+                                aria-controls="content-prep"
+                            >
+                                <h3 className={`text-3xl font-playfair transition-colors duration-300 ${openSection === 0 ? 'text-accent-gold' : 'text-accent-blue group-hover:text-accent-gold'}`}>Préparation à la Transaction (Vente ou IPO)</h3>
+                                <span className={`transform transition-all duration-500 ${openSection === 0 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold group-hover:rotate-180'}`}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                 </span>
-                            </div>
+                            </button>
 
-                            <div className="max-h-0 opacity-0 group-hover:max-h-[2000px] group-hover:opacity-100 transition-all duration-700 ease-in-out">
+                            <div id="content-prep" className={`transition-all duration-700 ease-in-out ${openSection === 0 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 group-hover:max-h-[2000px] group-hover:opacity-100'}`}>
                                 <div className="pt-8">
                                     <p className="text-text-secondary mb-8 leading-relaxed">
                                         Une intervention précoce, 12 à 18 mois en amont, est le facteur le plus déterminant pour maximiser la valorisation et sécuriser le processus. Nous travaillons à vos côtés pour préparer méticuleusement le terrain.
@@ -55,15 +67,20 @@ export default function SparringPartnerPage() {
                         </div>
 
                         {/* Block 2 */}
-                        <div className="group relative p-8 rounded-2xl bg-white border border-gray-100 hover:border-accent-blue/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 animate-fade-in-up delay-300 overflow-hidden">
-                            <div className="flex justify-between items-center cursor-pointer">
-                                <h3 className="text-3xl font-playfair text-accent-blue group-hover:text-accent-gold transition-colors duration-300">Booster les Acquisitions : Optimisation de la Fonction M&A</h3>
-                                <span className="text-accent-blue group-hover:text-accent-gold transform group-hover:rotate-180 transition-all duration-500">
+                        <div className={`group relative p-8 rounded-2xl bg-white border transition-all duration-500 animate-fade-in-up delay-300 overflow-hidden ${openSection === 1 ? 'border-accent-blue/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)]' : 'border-gray-100 hover:border-accent-blue/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]'}`}>
+                            <button 
+                                className="w-full flex justify-between items-center cursor-pointer text-left"
+                                onClick={() => toggleSection(1)}
+                                aria-expanded={openSection === 1}
+                                aria-controls="content-acq"
+                            >
+                                <h3 className={`text-3xl font-playfair transition-colors duration-300 ${openSection === 1 ? 'text-accent-gold' : 'text-accent-blue group-hover:text-accent-gold'}`}>Booster les Acquisitions : Optimisation de la Fonction M&A</h3>
+                                <span className={`transform transition-all duration-500 ${openSection === 1 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold group-hover:rotate-180'}`}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                 </span>
-                            </div>
+                            </button>
 
-                            <div className="max-h-0 opacity-0 group-hover:max-h-[2000px] group-hover:opacity-100 transition-all duration-700 ease-in-out">
+                            <div id="content-acq" className={`transition-all duration-700 ease-in-out ${openSection === 1 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 group-hover:max-h-[2000px] group-hover:opacity-100'}`}>
                                 <div className="pt-8">
                                     <p className="text-text-secondary mb-8 leading-relaxed">
                                         Pour les entreprises engagées dans une stratégie de croissance externe (buy-and-build), nous apportons la méthode et les outils pour transformer l'acquisition en une compétence clé.
@@ -89,15 +106,20 @@ export default function SparringPartnerPage() {
                         </div>
 
                         {/* Block 3 */}
-                        <div className="group relative p-8 rounded-2xl bg-white border border-gray-100 hover:border-accent-blue/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 animate-fade-in-up delay-400 overflow-hidden">
-                            <div className="flex justify-between items-center cursor-pointer">
-                                <h3 className="text-3xl font-playfair text-accent-blue group-hover:text-accent-gold transition-colors duration-300">Pendant et Après la Transaction</h3>
-                                <span className="text-accent-blue group-hover:text-accent-gold transform group-hover:rotate-180 transition-all duration-500">
+                        <div className={`group relative p-8 rounded-2xl bg-white border transition-all duration-500 animate-fade-in-up delay-400 overflow-hidden ${openSection === 2 ? 'border-accent-blue/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)]' : 'border-gray-100 hover:border-accent-blue/20 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]'}`}>
+                            <button 
+                                className="w-full flex justify-between items-center cursor-pointer text-left"
+                                onClick={() => toggleSection(2)}
+                                aria-expanded={openSection === 2}
+                                aria-controls="content-post"
+                            >
+                                <h3 className={`text-3xl font-playfair transition-colors duration-300 ${openSection === 2 ? 'text-accent-gold' : 'text-accent-blue group-hover:text-accent-gold'}`}>Pendant et Après la Transaction</h3>
+                                <span className={`transform transition-all duration-500 ${openSection === 2 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold group-hover:rotate-180'}`}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                 </span>
-                            </div>
+                            </button>
 
-                            <div className="max-h-0 opacity-0 group-hover:max-h-[2000px] group-hover:opacity-100 transition-all duration-700 ease-in-out">
+                            <div id="content-post" className={`transition-all duration-700 ease-in-out ${openSection === 2 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 group-hover:max-h-[2000px] group-hover:opacity-100'}`}>
                                 <div className="pt-8">
                                     <p className="text-text-secondary mb-8 leading-relaxed">
                                         Notre accompagnement se poursuit avec la même intensité durant les phases critiques et post-opération.
