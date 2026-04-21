@@ -135,7 +135,7 @@ Cartes ou blocs thématiques :[^1]
 
 ### Thématiques structurantes
 
-#### CEOs Pain Points
+#### CEO Financial Intelligence
 
 - Perte de rapport de force.[^1]
 - Peur du mauvais timing.[^1]
