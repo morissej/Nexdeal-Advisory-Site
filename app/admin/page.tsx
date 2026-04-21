@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Section } from '@/components/ui/Section';
-import { db } from '@/lib/firebase';
+import { db, auth } from '@/lib/firebase';
 import { collection, query, orderBy, getDocs, Timestamp } from 'firebase/firestore';
+import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 
 type ContactSubmission = {
     id: string;
@@ -20,21 +22,32 @@ type ContactSubmission = {
 };
 
 export default function AdminPage() {
-    const [code, setCode] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [error, setError] = useState('');
+    const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+    const router = useRouter();
     const [contacts, setContacts] = useState<ContactSubmission[]>([]);
     const [loadingData, setLoadingData] = useState(false);
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (code === '65350000') {
-            setIsAuthenticated(true);
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
             setError('');
-        } else {
-            setError('Code incorrect.');
+        } catch (err) {
+            setError('Email ou mot de passe incorrect.');
         }
     };
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setIsAuthenticated(!!user);
+            setIsCheckingAuth(false);
+        });
+        return () => unsubscribe();
+    }, []);
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -60,12 +73,14 @@ export default function AdminPage() {
         }
     }, [isAuthenticated]);
 
+    if (isCheckingAuth) return null;
+
     if (isAuthenticated) {
         return (
             <Section className="min-h-[60vh]">
                 <div className="flex justify-between items-center mb-8">
                     <h1 className="text-display font-playfair">Espace Administration</h1>
-                    <Button variant="secondary" onClick={() => setIsAuthenticated(false)}>Déconnexion</Button>
+                    <Button variant="secondary" onClick={() => signOut(auth)}>Déconnexion</Button>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -137,10 +152,17 @@ export default function AdminPage() {
                 <form onSubmit={handleLogin} className="space-y-4">
                     <div>
                         <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Email administrateur"
+                            className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all mb-4"
+                        />
+                        <input
                             type="password"
-                            value={code}
-                            onChange={(e) => setCode(e.target.value)}
-                            placeholder="Code d'accès"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Mot de passe"
                             className="w-full p-3 bg-background-primary border border-gray-200 rounded-[var(--radius-button)] focus:border-accent-blue focus:ring-1 focus:ring-accent-blue outline-none transition-all"
                         />
                     </div>
