@@ -38,9 +38,9 @@ export default function ContactPage() {
             await addDoc(collection(db, "contacts"), data);
 
             // 2. Send Email via EmailJS
-            const SERVICE_ID = 'service_v8a9rdk';
-            const TEMPLATE_ID = 'template_tq6r3op';
-            const PUBLIC_KEY = '6uz38p0daq7Nnc0Bp';
+            const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+            const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+            const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
 
             await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, PUBLIC_KEY);
 
