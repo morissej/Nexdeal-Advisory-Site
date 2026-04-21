@@ -34,12 +34,12 @@ export default function SparringPartnerPage() {
                                 aria-controls="content-prep"
                             >
                                 <h3 className={`text-3xl font-playfair transition-colors duration-300 ${openSection === 0 ? 'text-accent-gold' : 'text-accent-blue group-hover:text-accent-gold'}`}>Préparation à la Transaction (Vente ou IPO)</h3>
-                                <span className={`transform transition-all duration-500 ${openSection === 0 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold group-hover:rotate-180'}`}>
+                                <span className={`transform transition-all duration-500 ${openSection === 0 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold'}`}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                 </span>
                             </button>
 
-                            <div id="content-prep" className={`transition-all duration-700 ease-in-out ${openSection === 0 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 group-hover:max-h-[2000px] group-hover:opacity-100'}`}>
+                            <div id="content-prep" className={`transition-all duration-700 ease-in-out ${openSection === 0 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
                                 <div className="pt-8">
                                     <p className="text-text-secondary mb-8 leading-relaxed">
                                         Une intervention précoce, 12 à 18 mois en amont, est le facteur le plus déterminant pour maximiser la valorisation et sécuriser le processus. Nous travaillons à vos côtés pour préparer méticuleusement le terrain.
@@ -75,12 +75,12 @@ export default function SparringPartnerPage() {
                                 aria-controls="content-acq"
                             >
                                 <h3 className={`text-3xl font-playfair transition-colors duration-300 ${openSection === 1 ? 'text-accent-gold' : 'text-accent-blue group-hover:text-accent-gold'}`}>Booster les Acquisitions : Optimisation de la Fonction M&A</h3>
-                                <span className={`transform transition-all duration-500 ${openSection === 1 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold group-hover:rotate-180'}`}>
+                                <span className={`transform transition-all duration-500 ${openSection === 1 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold'}`}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                 </span>
                             </button>
 
-                            <div id="content-acq" className={`transition-all duration-700 ease-in-out ${openSection === 1 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 group-hover:max-h-[2000px] group-hover:opacity-100'}`}>
+                            <div id="content-acq" className={`transition-all duration-700 ease-in-out ${openSection === 1 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
                                 <div className="pt-8">
                                     <p className="text-text-secondary mb-8 leading-relaxed">
                                         Pour les entreprises engagées dans une stratégie de croissance externe (buy-and-build), nous apportons la méthode et les outils pour transformer l'acquisition en une compétence clé.
@@ -114,12 +114,12 @@ export default function SparringPartnerPage() {
                                 aria-controls="content-post"
                             >
                                 <h3 className={`text-3xl font-playfair transition-colors duration-300 ${openSection === 2 ? 'text-accent-gold' : 'text-accent-blue group-hover:text-accent-gold'}`}>Pendant et Après la Transaction</h3>
-                                <span className={`transform transition-all duration-500 ${openSection === 2 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold group-hover:rotate-180'}`}>
+                                <span className={`transform transition-all duration-500 ${openSection === 2 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold'}`}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                 </span>
                             </button>
 
-                            <div id="content-post" className={`transition-all duration-700 ease-in-out ${openSection === 2 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 group-hover:max-h-[2000px] group-hover:opacity-100'}`}>
+                            <div id="content-post" className={`transition-all duration-700 ease-in-out ${openSection === 2 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
                                 <div className="pt-8">
                                     <p className="text-text-secondary mb-8 leading-relaxed">
                                         Notre accompagnement se poursuit avec la même intensité durant les phases critiques et post-opération.

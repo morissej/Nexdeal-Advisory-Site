@@ -34,12 +34,12 @@ export default function BodyguardPage() {
                                 aria-controls="content-ceo"
                             >
                                 <h3 className={`text-3xl font-playfair transition-colors duration-300 ${openSection === 0 ? 'text-accent-gold' : 'text-accent-blue group-hover:text-accent-gold'}`}>Pour le CEO / Fondateur</h3>
-                                <span className={`transform transition-all duration-500 ${openSection === 0 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold group-hover:rotate-180'}`}>
+                                <span className={`transform transition-all duration-500 ${openSection === 0 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold'}`}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                 </span>
                             </button>
 
-                            <div id="content-ceo" className={`transition-all duration-700 ease-in-out ${openSection === 0 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 group-hover:max-h-[2000px] group-hover:opacity-100'}`}>
+                            <div id="content-ceo" className={`transition-all duration-700 ease-in-out ${openSection === 0 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
                                 <div className="pt-8">
                                     <p className="text-text-secondary mb-8 leading-relaxed">
                                         Nous offrons au dirigeant un soutien expert, objectif et dénué de tout conflit d'intérêts pour l'aider à naviguer dans les décisions les plus structurantes.
@@ -71,12 +71,12 @@ export default function BodyguardPage() {
                                 aria-controls="content-board"
                             >
                                 <h3 className={`text-3xl font-playfair transition-colors duration-300 ${openSection === 1 ? 'text-accent-gold' : 'text-accent-blue group-hover:text-accent-gold'}`}>Pour le Conseil d'Administration</h3>
-                                <span className={`transform transition-all duration-500 ${openSection === 1 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold group-hover:rotate-180'}`}>
+                                <span className={`transform transition-all duration-500 ${openSection === 1 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold'}`}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                 </span>
                             </button>
 
-                            <div id="content-board" className={`transition-all duration-700 ease-in-out ${openSection === 1 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 group-hover:max-h-[2000px] group-hover:opacity-100'}`}>
+                            <div id="content-board" className={`transition-all duration-700 ease-in-out ${openSection === 1 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
                                 <div className="pt-8">
                                     <p className="text-text-secondary mb-8 leading-relaxed">
                                         Nous aidons le Conseil à exercer pleinement sa responsabilité fiduciaire en lui apportant un regard extérieur et indépendant.
@@ -108,12 +108,12 @@ export default function BodyguardPage() {
                                 aria-controls="content-ma"
                             >
                                 <h3 className={`text-3xl font-playfair transition-colors duration-300 ${openSection === 2 ? 'text-accent-gold' : 'text-accent-blue group-hover:text-accent-gold'}`}>Pour les Professionnels M&A</h3>
-                                <span className={`transform transition-all duration-500 ${openSection === 2 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold group-hover:rotate-180'}`}>
+                                <span className={`transform transition-all duration-500 ${openSection === 2 ? 'text-accent-gold rotate-180' : 'text-accent-blue group-hover:text-accent-gold'}`}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                 </span>
                             </button>
 
-                            <div id="content-ma" className={`transition-all duration-700 ease-in-out ${openSection === 2 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0 group-hover:max-h-[2000px] group-hover:opacity-100'}`}>
+                            <div id="content-ma" className={`transition-all duration-700 ease-in-out ${openSection === 2 ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
                                 <div className="pt-8">
                                     <p className="text-text-secondary mb-8 leading-relaxed">
                                         Nous proposons un coaching ciblé pour accélérer le développement professionnel et personnel des talents évoluant dans cet environnement exigeant.
