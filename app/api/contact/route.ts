@@ -8,7 +8,7 @@ const schema = z.object({
     name: z.string().min(2, "Le nom doit contenir au moins 2 caractères.").max(100, "Le nom est trop long."),
     email: z.string().email("L'adresse email est invalide."),
     phone: z.string().optional(),
-    turnover: z.enum(['0-50', '50-100', '100-500', '500+'], { errorMap: () => ({ message: "Veuillez sélectionner une tranche de CA." }) }),
+    turnover: z.enum(['0-50', '50-100', '100-500', '500+'], { message: "Veuillez sélectionner une tranche de CA." }),
     message: z.string().min(10, "Le message doit faire au moins 10 caractères.").max(2000, "Le message est trop long.")
 });
 
