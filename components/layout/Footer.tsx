@@ -27,6 +27,7 @@ export const Footer: React.FC = () => {
                         <a href="https://landing-page-body-guard.firebaseapp.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Mini site Body Guard</a>
                         <a href="https://vague-transmission.web.app/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Mini site La grande transmission</a>
                         <a href="https://competitivite-explorer-fr.firebaseapp.com/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Mini site Le casse tête de compétitivité</a>
+                        <a href="https://trajectoire-ib.web.app" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Mini site Le Casse-tête de l'Ascension : Devenir Managing Director</a>
                     </div>
                     <div>
                         <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Contact</h4>
