@@ -18,6 +18,7 @@ export const Footer: React.FC = () => {
                         <Link href="/sparring-partner" className="text-gray-300 hover:text-white transition-colors">Sparring Partner</Link>
                         <Link href="/bodyguard" className="text-gray-300 hover:text-white transition-colors">Bodyguard</Link>
                         <Link href="/pain-points" className="text-gray-300 hover:text-white transition-colors">CEO Financial Intelligence</Link>
+                        <Link href="/career-management" className="text-gray-300 hover:text-white transition-colors">M&A Career management</Link>
                         <Link href="/team" className="text-gray-300 hover:text-white transition-colors">Équipe</Link>
                     </div>
                     <div className="flex flex-col gap-4">
@@ -36,6 +37,7 @@ export const Footer: React.FC = () => {
                         <div className="flex flex-col gap-2">
                             <a href="https://www.linkedin.com/company/110420139/admin/dashboard/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Linkedin Nexdeal Advisory</a>
                             <a href="https://www.linkedin.com/showcase/ceos-pain-points/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Linkedin CEO Financial Intelligence</a>
+                            <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Linkedin M&A Career management</a>
                         </div>
                     </div>
                 </div>

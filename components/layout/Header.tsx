@@ -13,6 +13,7 @@ const NAV_ITEMS = [
     { label: 'Sparring Partner', href: '/sparring-partner' },
     { label: 'Bodyguard', href: '/bodyguard' },
     { label: 'CEO Financial Intelligence', href: '/pain-points' },
+    { label: 'M&A Career management', href: '/career-management' },
     { label: 'Équipe', href: '/team' },
 ];
 
