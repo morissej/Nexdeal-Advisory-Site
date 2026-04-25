@@ -215,12 +215,20 @@ export default function PainPointsPage() {
                 <div className="max-w-[var(--spacing-container)] mx-auto px-6 lg:px-8 text-center md:text-left">
                     <h1 className="text-h1 font-playfair animate-fade-in-up mb-8">CEO Financial Intelligence</h1>
 
-                    <a href="https://vague-transmission.web.app/" target="_blank" rel="noopener noreferrer" className="inline-block animate-fade-in-up delay-200">
-                        <div className="bg-accent-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-accent-blue/90 transition-colors shadow-lg hover:shadow-xl flex items-center gap-3">
-                            <span>En savoir plus sur la grande vague de transmissions d'entreprises qui arrive avec le départ à la retraite des boomers</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
-                        </div>
-                    </a>
+                    <div className="flex flex-col items-center md:items-start gap-4">
+                        <a href="https://vague-transmission.web.app/" target="_blank" rel="noopener noreferrer" className="inline-block animate-fade-in-up delay-200">
+                            <div className="bg-accent-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-accent-blue/90 transition-colors shadow-lg hover:shadow-xl flex items-center gap-3 text-left">
+                                <span>En savoir plus sur la grande vague de transmissions d'entreprises qui arrive avec le départ à la retraite des boomers</span>
+                                <svg className="shrink-0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                            </div>
+                        </a>
+                        <a href="https://competitivite-explorer-fr.web.app" target="_blank" rel="noopener noreferrer" className="inline-block animate-fade-in-up delay-300">
+                            <div className="bg-accent-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-accent-blue/90 transition-colors shadow-lg hover:shadow-xl flex items-center gap-3 text-left">
+                                <span>En savoir plus sur l'impact des grandes tendances macro en France sur les PME et les TPI</span>
+                                <svg className="shrink-0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </section>
 
