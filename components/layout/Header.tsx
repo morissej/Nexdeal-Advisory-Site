@@ -12,7 +12,7 @@ const NAV_ITEMS = [
     { label: 'Notre approche', href: '/services' },
     { label: 'Sparring Partner', href: '/sparring-partner' },
     { label: 'Bodyguard', href: '/bodyguard' },
-    { label: 'CEOs Painpoints', href: '/pain-points' },
+    { label: 'CEO Financial Intelligence', href: '/pain-points' },
     { label: 'Équipe', href: '/team' },
 ];
 

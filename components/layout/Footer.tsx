@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
                         <Link href="/services" className="text-gray-300 hover:text-white transition-colors">Notre approche</Link>
                         <Link href="/sparring-partner" className="text-gray-300 hover:text-white transition-colors">Sparring Partner</Link>
                         <Link href="/bodyguard" className="text-gray-300 hover:text-white transition-colors">Bodyguard</Link>
-                        <Link href="/pain-points" className="text-gray-300 hover:text-white transition-colors">CEOs Painpoints</Link>
+                        <Link href="/pain-points" className="text-gray-300 hover:text-white transition-colors">CEO Financial Intelligence</Link>
                         <Link href="/team" className="text-gray-300 hover:text-white transition-colors">Équipe</Link>
                     </div>
                     <div className="flex flex-col gap-4">
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
                         <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">Liens Linkedin</h4>
                         <div className="flex flex-col gap-2">
                             <a href="https://www.linkedin.com/company/110420139/admin/dashboard/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Linkedin Nexdeal Advisory</a>
-                            <a href="https://www.linkedin.com/showcase/ceos-pain-points/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Linkedin CEO Pain Points</a>
+                            <a href="https://www.linkedin.com/showcase/ceos-pain-points/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">Linkedin CEO Financial Intelligence</a>
                         </div>
                     </div>
                 </div>

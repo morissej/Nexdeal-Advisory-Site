@@ -43,7 +43,7 @@ export default function TeamPage() {
                             Un parcours au sein des leaders de Wall Street :
                         </p>
                         <ul className="space-y-3">
-                            {['Morgan Stanley', 'Citi', 'Bank of America Merrill Lynch'].map((bank, i) => (
+                            {['Morgan Stanley'].map((bank, i) => (
                                 <li key={i} className="flex items-center gap-3 text-text-primary font-medium">
                                     <span className="w-1.5 h-1.5 rounded-full bg-accent-gold" />
                                     {bank}

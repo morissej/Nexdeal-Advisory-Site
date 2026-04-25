@@ -213,7 +213,7 @@ export default function PainPointsPage() {
         <>
             <section className="bg-background-secondary py-32 border-b border-gray-100">
                 <div className="max-w-[var(--spacing-container)] mx-auto px-6 lg:px-8 text-center md:text-left">
-                    <h1 className="text-h1 font-playfair animate-fade-in-up mb-8">CEOs Painpoints</h1>
+                    <h1 className="text-h1 font-playfair animate-fade-in-up mb-8">CEO Financial Intelligence</h1>
 
                     <a href="https://vague-transmission.web.app/" target="_blank" rel="noopener noreferrer" className="inline-block animate-fade-in-up delay-200">
                         <div className="bg-accent-blue text-white px-8 py-4 rounded-lg font-medium hover:bg-accent-blue/90 transition-colors shadow-lg hover:shadow-xl flex items-center gap-3">
